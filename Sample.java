@@ -1,4 +1,38 @@
 class Sample{
+
+/**********************PROBLEM-1*****************/
+    //TC:0(N)
+//SC:0(1)
+    class Solution {
+        public int trap(int[] height) {
+            if(height==null || height.length==0){
+                return 0;
+            }
+            int n=height.length,total=0;
+            int l=0,lw=0,r=n-1,rw=0;
+            while(l<=r){
+                if(lw<=rw){
+                    if(height[l]<lw){
+                        total+=lw-height[l];
+                    }else{
+                        lw=height[l];
+                    }
+                    l++;
+                }else{
+                    if(height[r]<rw){
+                        total+=rw-height[r];
+                    }else{
+                        rw=height[r];
+                    }
+                    r--;
+                }
+            }
+            return total;
+
+        }
+    }
+
+
     /****************PROBLEM-2******************/
     //TC:0(NlogN)
 //SC:0(N)
