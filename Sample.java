@@ -81,5 +81,57 @@ class Sample{
         }
     }
 
+/**********************PROBLEM-3*****************/
+//TC:0(N)
+//SC:0(N)
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if(nums==null || nums.length==0){
+            return;
+        }
 
+        int n=nums.length,index=0;
+        if(k>n){
+            k=k%n;
+        }
+        int[] result=new int[n];
+        for(int i=n-k;i<n;i++){
+            result[index++]=nums[i];
+        }
+        for(int i=0;i<n-k;i++){
+            result[index++]=nums[i];
+        }
+        for(int i=0;i<n;i++){
+            nums[i]=result[i];
+        }
+    }
+}
+
+    //TC:0(N)
+//SC:0(1)
+    class Solution {
+        public void rotate(int[] nums, int k) {
+            if(nums==null || nums.length==0){
+                return;
+            }
+
+            int n=nums.length;
+            if(k>n){
+                k=k%n;
+            }
+            reverse(nums,0,n-1);
+            reverse(nums,0,k-1);
+            reverse(nums,k,n-1);
+        }
+
+        private void reverse(int[] nums,int left,int right){
+            while(left<=right){
+                int temp=nums[left];
+                nums[left]=nums[right];
+                nums[right]=temp;
+                left++;
+                right--;
+            }
+        }
+    }
 }
